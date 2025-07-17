@@ -14,9 +14,11 @@ Recommended Time and Space: O(n) and O(n)
 
 #include <vector>
 #include <iostream>
+#include <algorithm>
+#include <unordered_set>
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     bool hasDuplicate(vector<int>& nums) {
         for (int i = 0; i < nums.size(); i++) {
@@ -30,9 +32,10 @@ public:
     }
 };
 
+
 // Sorting: Time O(nlogn) and Space O(n) or O(1)
-/*
-class Solution {
+
+class Solution2 {
 public:
     bool hasDuplicate(vector<int>& nums) {
         sort(nums.begin(), nums.end());
@@ -44,11 +47,9 @@ public:
         return false;
     }
 };
-*/
 
 // Hash Set: Time and Space: O(n)
-/*
-class Solution {
+class Solution3 {
 public:
     bool hasDuplicate(vector<int>& nums) {
         unordered_set<int> seen;
@@ -61,21 +62,24 @@ public:
         return false;
     }
 };
-*/
 
 // Hash Set Length: Time O(n) and Space O(n)
-/*
-class Solution {
+class Solution4 {
 public:
     bool hasDuplicate(vector<int>& nums) {
         return unordered_set<int>(nums.begin(), nums.end()).size() < nums.size();
     }
 };
-*/
 
 int main()
 {
-    Solution soln;
+    Solution1 soln1;
+    Solution2 soln2;
+    Solution3 soln3;
+    Solution4 soln4;
     vector<int> nums = {1,2,3,1};
-    cout <<soln.hasDuplicate(nums);
+    cout <<soln1.hasDuplicate(nums)<<"\n";
+    cout <<soln2.hasDuplicate(nums)<<"\n";
+    cout <<soln3.hasDuplicate(nums)<<"\n";
+    cout <<soln4.hasDuplicate(nums)<<"\n";
 }
