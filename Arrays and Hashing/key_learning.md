@@ -17,7 +17,7 @@ for(int i = 0; i<s.length(); i++){
 return countS == countT;
 ```
 
-# Finding Pairs
+# Two Sum 
 
 ```cpp
 for (int i = 0; i < nums.size(); i++) {

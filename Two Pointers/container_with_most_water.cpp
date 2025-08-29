@@ -1,6 +1,12 @@
+/*
+"heights"  is an integer array where heights[i] represents height of ith bar.
+Return max amount of wawter a container can store.
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <vector>
+
 int bruteForce(std::vector<int> heights,int size)
 {
   int maxWater{0};
@@ -17,6 +23,7 @@ int bruteForce(std::vector<int> heights,int size)
   }
   return maxWater;
 }
+
 int optimized(std::vector<int> heights, int size)
 {
   int lp{0},rp={size-1},maxWater{0},width,ht,currentWater;

@@ -7,7 +7,7 @@ The output should not contain any duplicate triplets.
 You may return the output and the triplets in any order.
 
 Example 1:
-Input: nums = [-1,0,1,2,-1,-4]
+Input: nums = [-1,0,1,2,-1,-4] and target = 0
 
 Output: [[-1,-1,2],[-1,0,1]]
 
@@ -18,13 +18,13 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
 The distinct triplets are [-1,0,1] and [-1,-1,2].
 
 Example 2:
-Input: nums = [0,1,1]
+Input: nums = [0,1,1] and target = 0
 
 Output: []
 Explanation: The only possible triplet does not sum up to 0.
 
 Example 3:
-Input: nums = [0,0,0]
+Input: nums = [0,0,0] and target = 0
 
 Output: [[0,0,0]]
 Explanation: The only possible triplet sums up to 0.
