@@ -1,4 +1,5 @@
 //Definition for singly-linked list.
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -7,27 +8,52 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        ListNode* res = new ListNode(0);
-        ListNode* cur = res;
-
-        while (true) {
-            int minNode = -1;
-            for (int i = 0; i < lists.size(); i++) {
-                if (!lists[i]) continue;
-                if (minNode == -1 || lists[minNode]->val > lists[i]->val) {
-                    minNode = i;
-                }
-            }
-
-            if (minNode == -1) break;
-            cur->next = lists[minNode];
-            lists[minNode] = lists[minNode]->next;
-            cur = cur->next;
+        if (lists.empty()) {
+            return nullptr;
         }
-        return res->next;
+        return divide(lists, 0, lists.size() - 1);
+    }
+
+private:
+    ListNode* divide(vector<ListNode*>& lists, int l, int r) {
+        if (l > r) {
+            return nullptr;
+        }
+        if (l == r) {
+            return lists[l];
+        }
+
+        int mid = l + (r - l) / 2;
+        ListNode* left = divide(lists, l, mid);
+        ListNode* right = divide(lists, mid + 1, r);
+
+        return conquer(left, right);
+    }
+
+    ListNode* conquer(ListNode* l1, ListNode* l2) {
+        ListNode dummy(0);
+        ListNode* curr = &dummy;
+
+        while (l1 && l2) {
+            if (l1->val <= l2->val) {
+                curr->next = l1;
+                l1 = l1->next;
+            } else {
+                curr->next = l2;
+                l2 = l2->next;
+            }
+            curr = curr->next;
+        }
+
+        if (l1) {
+            curr->next = l1;
+        } else {
+            curr->next = l2;
+        }
+
+        return dummy.next;
     }
 };
