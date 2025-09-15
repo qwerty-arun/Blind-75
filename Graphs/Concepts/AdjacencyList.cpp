@@ -5,6 +5,7 @@
 class Graph{
     int V;
     std::list<int> *l; //int *arr
+    // 'l' points to an array of 'V' Linked Lists of integers
 
 public:
     Graph(int V){
@@ -14,8 +15,8 @@ public:
     }
 
     void addEdge(int u, int v){
-        l[u].push_back(v);
-        l[v].push_back(u);
+        l[u].push_back(v); // 'u' adds 'v' as its neighbour
+        l[v].push_back(u); // 'v' adds 'u' as its neighbour
     }
 
     void printAdjList(){

@@ -24,8 +24,8 @@ public:
         vis[u] = true;
 
         for(int v: l[u]){
-            if(!vis[v]){
-                depthFirstSearchHelper(v, vis);
+            if(!vis[v]){ // if neighbour is not visited
+                depthFirstSearchHelper(v, vis); // 'v' becomes the source
             }
         }
     }
